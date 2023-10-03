@@ -3,6 +3,8 @@
     <router-view />
   </div>
 </template>
+<style src="../assets/fontawesome-free-6.4.2-web/css/all.css" ></style>
+
 <script>
 import messages from '@/utils/messages'
 export default {
@@ -13,7 +15,6 @@ export default {
   },
   watch: {
     error(fbError){
-      console.log(fbError)
       this.$error(messages[fbError.code] || 'Что-то пошло не так')
     }
   },
