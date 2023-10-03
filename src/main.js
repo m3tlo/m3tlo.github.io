@@ -43,7 +43,6 @@ firebase.initializeApp({
 
 let app
 
- (async function() {await this.$store.dispatch('fetchInfo')}());
 
 firebase.auth().onAuthStateChanged(() => {
   if(!app) {
