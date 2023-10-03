@@ -152,7 +152,6 @@ export default {
             this.type === 'income'
               ? this.info.bill + this.amount
               : this.info.bill - this.amount;
-          console.log(bill)
           await this.$store.dispatch('updateInfo', { bill });
           this.$message('Запись успешно создана');
           this.$v.$reset();

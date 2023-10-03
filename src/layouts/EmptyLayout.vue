@@ -15,7 +15,6 @@ export default {
   },
   watch: {
     error(fbError){
-      console.log(fbError)
       this.$error(messages[fbError.code] || 'Что-то пошло не так')
     }
   },

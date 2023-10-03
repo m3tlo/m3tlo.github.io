@@ -40,10 +40,7 @@ export default {
           .ref(`/users/${uid}/info`)
           .once('value')).val()
           )
-        console.log((await firebase
-          .database()
-          .ref(`/users/${uid}/info`)
-          .once('value')).val())
+        
       } catch (e) {
         commit('setError', e)
         throw e
