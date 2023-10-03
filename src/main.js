@@ -10,6 +10,7 @@ import tooltipDirective from './directives/tooltip.directive';
 import MyLoader from './components/app/MyLoader';
 import './registerServiceWorker';
 import 'materialize-css/dist/js/materialize.min';
+import MyPaginate from 'vuejs-paginate';
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -27,6 +28,8 @@ Vue.filter('date', dateFilter)
 Vue.filter('currency', currencyFilter);
 Vue.directive('tooltip', tooltipDirective)
 Vue.component('MyLoader', MyLoader)
+Vue.component('MyPaginate', MyPaginate)
+
 
 firebase.initializeApp({
   apiKey: 'AIzaSyBtFNJ6Jie_htCxV_MfNEgX4a4SRs155u4',

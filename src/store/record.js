@@ -7,7 +7,7 @@ export default {
       try {
         // const uid = await dispatch('getUid');
         // await firebase.database().ref(`/users/${uid}/records`).push(record);
-        this.getters.info.records.push(record)
+        this.getters.info.records.push(record);
       } catch (error) {
         commit('setError', error);
         throw error;
@@ -24,6 +24,25 @@ export default {
           ...records[key],
           id: key,
         }));
+      } catch (error) {
+        commit('setError', error);
+        throw error;
+      }
+    },
+    async fetchRecordById({ dispatch, commit }, id) {
+      try {
+        // const uid = await dispatch('getUid');
+        // const record =
+        //   (
+        //     await firebase
+        //       .database()
+        //       .ref(`/users/${uid}/records`)
+        //       .child(id)
+        //       .once('value')
+        //   ).val() || {};
+        const records = this.getters.info.records;
+        const record = records.filter((r) => r.id === id)
+        return { ...record, id };
       } catch (error) {
         commit('setError', error);
         throw error;
