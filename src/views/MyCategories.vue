@@ -45,14 +45,13 @@ export default {
     updateCount: 0
   }),
   async mounted() {
-    this.categories = this.$store.getters.info.categories
-
-    //  this.categories = await this.$store.dispatch('fetchCategories')
+    // this.categories = this.$store.getters.info.categories
+    
+     this.categories = await this.$store.dispatch('fetchCategories')
   },
   methods: {
     addNewCategory(category) {
       this.categories.push(category)
-      console.log(this.categories)
     },
     updateCategories(category) {
       const index = this.categories.findIndex(c => c.id === category.id)

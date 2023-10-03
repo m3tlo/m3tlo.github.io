@@ -83,7 +83,6 @@ export default {
   mounted() {
     this.select = M.FormSelect.init(this.$refs.select);
     M.updateTextFields();
-    console.log(this.categories)
   },
   watch: {
     current(catID) {
@@ -115,9 +114,8 @@ export default {
           title: this.title,
           limit: this.limit,
         }
-
+        // eslint-disable-next-line
         const category = await this.$store.dispatch('updateCategory', categoryData);
-        console.log(category);        
         this.$message('Категория изменена');
         this.$emit('updated', categoryData)
        
