@@ -25,12 +25,11 @@ export default {
         //   .ref(`/users/${uid}/categories`)
         //   .child(id)
         //   .update({ title, limit });
-        const categories = this.getters.info.categories
-         if (categories.find((c) => c.id === id)){
-           categories.title = title 
-           categories.limit = limit
-         }
-
+        const categories = this.getters.info.categories;
+        if (categories.find((c) => c.id === id)) {
+          categories.title = title;
+          categories.limit = limit;
+        }
       } catch (error) {
         commit('setError', error);
         throw error;
@@ -50,6 +49,26 @@ export default {
           ...categories[key],
           id: key,
         }));
+      } catch (error) {
+        commit('setError', error);
+        throw error;
+      }
+    },
+    async fetchCategoryById({ commit, dispatch }, id) {
+      try {
+        // const uid = await dispatch('getUid');
+        // const category =
+        //   (
+        //     await firebase
+        //       .database()
+        //       .ref(`/users/${uid}/categories`)
+        //       .child(id)
+        //       .once('value')
+        //   ).val() || {};
+        const categories = this.getters.info.categories;
+        const category = categories.find((c) => c.id === id)
+        
+        return {category, id}
       } catch (error) {
         commit('setError', error);
         throw error;

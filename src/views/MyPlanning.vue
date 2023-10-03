@@ -41,9 +41,9 @@ export default {
     this.categories = this.info.categories
 
     const records = this.info.records
-    console.log(this.categories, records)
-    // const categories = await this.$store.dispatch('fetchCategories')
+    // this.categories = await this.$store.dispatch('fetchCategories')
     // const records = await this.$store.dispatch('fetchRecords');
+    console.log(this.categories, records)
 
     this.categories = this.categories.map((cat) => {
       const spend = records

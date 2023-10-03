@@ -19,7 +19,7 @@ const router = new VueRouter({
     {
       path: '/register',
       name: 'register',
-      meta: {layout: 'empty' , auth: true},
+      meta: {layout: 'empty'},
       component: () => import("@/views/UserRegister.vue")
     },
     {
@@ -42,7 +42,7 @@ const router = new VueRouter({
       component: () => import("@/views/MyRecord.vue")
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'detail',
       meta: {layout: 'main', auth: true},
       component: () => import("@/views/DetailRecord.vue")
