@@ -21,6 +21,7 @@
     </div>
   </div>
 </template>
+<style src="../assets/fontawesome-free-6.4.2-web/css/all.css" ></style>
 <script>
 import NavBar from '@/components/app/NavBar.vue'
 import SideBar from '@/components/app/SideBar.vue'
@@ -31,11 +32,11 @@ export default {
   data: () => ({
     isOpen: true,
   }),
-  // async mounted() {
-  //   if(!Object.keys(this.$store.getters.info).length) {
-  //     await this.$store.dispatch('fetchInfo')
-  //   }
-  // },
+  async mounted() {
+    if(!Object.keys(this.$store.getters.info).length) {
+      await this.$store.dispatch('fetchInfo')
+    }
+  },
   components: {
     NavBar,
     SideBar,

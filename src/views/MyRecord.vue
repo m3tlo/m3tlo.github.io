@@ -75,7 +75,7 @@
           </span>
         </div>
 
-        <button class="btn waves-effect waves-light" type="submit">
+        <button class="btn  waves-light" type="submit">
           Создать
           <i class="fa-solid fa-share right"></i>
         </button>
@@ -107,9 +107,10 @@ export default {
     description: { required },
   },
   async mounted() {
-    this.categories = this.info.categories
-    // this.categories = await this.$store.dispatch('fetchCategories')
+    // this.categories = this.info.categories
+    this.categories = await this.$store.dispatch('fetchCategories')
     this.loading = false;
+
     if (this.categories.length) {
       this.category = this.categories[0].id;
     }
@@ -151,7 +152,7 @@ export default {
             this.type === 'income'
               ? this.info.bill + this.amount
               : this.info.bill - this.amount;
-
+          console.log(bill)
           await this.$store.dispatch('updateInfo', { bill });
           this.$message('Запись успешно создана');
           this.$v.$reset();
@@ -161,7 +162,10 @@ export default {
           console.log(error);
         }
       } else {
+        
+
         this.$message(
+
           `Недостаточно средств на счете (${this.amount - this.info.bill})  `
         );
       }

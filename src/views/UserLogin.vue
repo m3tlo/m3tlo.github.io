@@ -76,7 +76,9 @@ export default {
     email: {email, required},
     password: {required, minLength: minLength(8),},
   },
-  mounted() {
+ async mounted() {
+    await this.$store.dispatch('fetchInfo')
+
     if(messages[this.$route.query.message]) {
       this.$message(messages[this.$route.query.message])
     }
@@ -93,11 +95,10 @@ export default {
       }
       try {
         await this.$store.dispatch('login', formData)
-        console.log(formData)
         this.$router.push('/')
       } catch (error) {
         console.log('eror')
-        this.$router.push('/')
+        // this.$router.push('/')
       }
       
     },
