@@ -67,27 +67,24 @@ export default {
     categories: [],
   }),
   async mounted() {
-    this.records = await this.info.records;
-    const categories = await this.info.categories;
+    this.records = await this.$store.dispatch('fetchRecords')
+    const categoires = await this.$store.dispatch('fetchCategories')
+    this.categories = categoires
+    this.setup(categoires)
 
-    // this.categories = await this.$store.dispatch('fetchCategories')
-    // const records = await this.$store.dispatch('fetchRecords');
-    this.setup(categories);
-
-    this.loading = false;
-    console.log(this.records);
+    this.loading = false
   },
 
   computed: {
     ...mapGetters(['info']),
     chartData() {
-      const categories = this.info.categories;
+      
       return {
-        labels: categories.map((cat) => cat.title),
+        labels: this.categories.map((cat) => cat.title),
         datasets: [
           {
             label: 'Расходы по категориям',
-            data: categories.map((cat) => {
+            data: this.categories.map((cat) => {
               return this.records.reduce((total, record) => {
                 if (record.categoryId === cat.id && record.type === 'outcome') {
                   total += +record.amount;

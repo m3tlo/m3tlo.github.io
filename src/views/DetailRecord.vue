@@ -6,17 +6,17 @@
         <div class="breadcrumb-wrap">
           <a href="/history" class="breadcrumb">История</a>
           <i class="fa-solid fa-chevron-right"></i>
-          <a class="breadcrumb"> Расход </a>
+          <a class="breadcrumb"> {{record.type === 'income' ? 'Доход' : 'Расход'}} </a>
         </div>
         <div class="row">
           <div class="col s12 m6">
-            <div class="card red">
+            <div class="card " :class="record.type === 'income' ? 'green' : 'red'">
               <div class="card-content white-text">
                 <p>Описание: {{ record.description }}</p>
                 <p>Сумма: {{ record.amount | currency }}</p>
                 <p>Категория: {{ record.categoryName }}</p>
 
-                <small>{{record.date}}</small>
+                <small>{{record.date | date('datetime')}}</small>
               </div>
             </div>
           </div>

@@ -18,12 +18,10 @@ export default {
   props: ['rates'],
   data: () => ({
     currencies: ['RUB', 'USD', 'EUR'],
-    // bill: 65000
   }),
   computed: {
     ...mapGetters(['info']),
     base() {
-      console.log(this.info.bill)
 
       return this.$store.getters.info.bill / (this.rates['RUB'] / this.rates['EUR']);
      
@@ -31,10 +29,10 @@ export default {
   },
   methods: {
     getCurrency(currency) {
-      console.log(currency)
 
       return Math.floor(this.base * this.rates[currency]);
     },
   },
+
 };
 </script>

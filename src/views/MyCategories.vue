@@ -45,9 +45,9 @@ export default {
     updateCount: 0
   }),
   async mounted() {
-    this.categories = this.$store.getters.info.categories
-
-    //  this.categories = await this.$store.dispatch('fetchCategories')
+    // this.categories = this.$store.getters.info.categories
+    
+     this.categories = await this.$store.dispatch('fetchCategories')
   },
   methods: {
     addNewCategory(category) {

@@ -38,11 +38,13 @@ export default {
     categories: [],
   }),
   async mounted() {
-    this.categories = this.info.categories
+    // this.categories = this.info.categories
 
-    const records = this.info.records
-    // this.categories = await this.$store.dispatch('fetchCategories')
-    // const records = await this.$store.dispatch('fetchRecords');
+    // const records = this.info.records
+    this.$store.getters.info.bill
+
+    this.categories = await this.$store.dispatch('fetchCategories')
+    const records = await this.$store.dispatch('fetchRecords');
     console.log(this.categories, records)
 
     this.categories = this.categories.map((cat) => {
